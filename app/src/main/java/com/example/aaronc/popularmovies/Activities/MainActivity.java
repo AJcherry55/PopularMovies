@@ -35,16 +35,16 @@ public class MainActivity extends AppCompatActivity {
     GridView mainMenuGrid;
     ProgressBar loadProgress;
     //PLACE YOUR API_KEY HERE TO ACCESS THE MOVIESDB API CONTENT
-    String API_KEY = " ";
+    String API_KEY = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mainMenuGrid = (GridView) findViewById(R.id.movies_grid);
+        mainMenuGrid = findViewById(R.id.movies_grid);
         mainMenuGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

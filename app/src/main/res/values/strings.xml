@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">PopularMovies</string>
     <string name="list_popular">List By Popularity</string>
-    <string name="list_ranking">List By Ranking</string>
+    <string name="list_ranking">List By Rating</string>
     <string name="list_alphabet">List By Alphabetical</string>
 
     <string name="title_activity_details">DetailsActivity</string>
+    <string name="favorites_button_text">MARK AS FAVORITE</string>
 </resources>

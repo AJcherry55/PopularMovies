@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,8 +29,7 @@ import static android.support.v4.content.ContextCompat.startActivity;
 
 public class AndroidMovieGridViewAdapter extends ArrayAdapter<MovieObject> implements AdapterView.OnItemClickListener {
     private List<MovieObject> mMovieObjectList;
-
-
+    MovieObject movieObject;
     public AndroidMovieGridViewAdapter(Context context, List<MovieObject> movieObjectList) {
         super(context, 0, movieObjectList);
         mMovieObjectList = movieObjectList;
@@ -37,13 +37,13 @@ public class AndroidMovieGridViewAdapter extends ArrayAdapter<MovieObject> imple
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        MovieObject movieObject = getItem(position);
+        movieObject = getItem(position);
         if (convertView == null) {
             convertView
                     = LayoutInflater.from(getContext()).inflate(
                     R.layout.grid_list_item, parent, false);
         }
-        ImageView moviePoster = (ImageView) convertView.findViewById(R.id.movie_poster);
+        ImageView moviePoster = convertView.findViewById(R.id.movie_poster);
         //TextView movieTitle = (TextView)convertView.findViewById(R.id.movie_title);
         //Picasso.get().load(movieObject.posterPath).into(moviePoster);
         Picasso.with(getContext()).load(movieObject.posterPath).into(moviePoster);
@@ -60,8 +60,8 @@ public class AndroidMovieGridViewAdapter extends ArrayAdapter<MovieObject> imple
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(getContext(), DetailsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("movies", (Serializable) mMovieObjectList);
+        bundle.putSerializable("movies", mMovieObjectList.get(position));
         intent.putExtras(bundle);
-        startActivity(getContext(), intent, bundle);
+        startActivity(getContext(), intent, null);
     }
 }
